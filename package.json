@@ -1,0 +1,25 @@
+{
+  "name": "ink-select",
+  "version": "0.1.0",
+  "description": "Select Component for Ink",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/karaggeorge/ink-select.git"
+  },
+  "keywords": [
+    "ink",
+    "select",
+    "component",
+    "input"
+  ],
+  "author": "George Karagkiaouris",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/karaggeorge/ink-select/issues"
+  },
+  "homepage": "https://github.com/karaggeorge/ink-select#readme"
+}
