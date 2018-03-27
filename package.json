@@ -27,70 +27,70 @@
     "input"
   ],
   "babel": {
-		"plugins": [
-			[
-				"transform-react-jsx",
-				{
-					"pragma": "h",
-					"useBuiltIns": true
-				}
-			]
-		]
-	},
+    "plugins": [
+      [
+        "transform-react-jsx",
+        {
+          "pragma": "h",
+          "useBuiltIns": true
+        }
+      ]
+    ]
+  },
   "ava": {
-		"babel": {
-			"presets": [
-				"@ava/stage-4"
-			],
-			"plugins": [
-				[
-					"transform-react-jsx",
-					{
-						"pragma": "h",
-						"useBuiltIns": true
-					}
-				]
-			]
-		}
-	},
+    "babel": {
+      "presets": [
+        "@ava/stage-4"
+      ],
+      "plugins": [
+        [
+          "transform-react-jsx",
+          {
+            "pragma": "h",
+            "useBuiltIns": true
+          }
+        ]
+      ]
+    }
+  },
   "xo": {
-		"extends": [
-			"xo-react"
-		],
+    "extends": [
+      "xo-react"
+    ],
     "space": 2,
-		"rules": {
-			"react/prop-types": 0,
-			"react/jsx-key": 0,
-			"react/no-unused-prop-types": 0,
-			"react/require-default-props": 0
-		},
-		"ignores": [
-			"example/*.js",
+    "rules": {
+      "react/prop-types": 0,
+      "react/jsx-key": 0,
+      "react/no-unused-prop-types": 0,
+      "react/require-default-props": 0
+    },
+    "ignores": [
+      "example/*.js",
       "lib/**/*.js"
-		],
-		"settings": {
-			"react": {
-				"pragma": "h"
-			}
-		}
-	},
+    ],
+    "settings": {
+      "react": {
+        "pragma": "h"
+      }
+    }
+  },
   "devDependencies": {
-		"ava": "^0.20.0",
-		"babel-cli": "^6.24.1",
-		"babel-plugin-transform-react-jsx": "^6.24.1",
-		"eslint-config-xo-react": "^0.13.0",
-		"eslint-plugin-react": "^7.1.0",
-		"ink": "0.3.0",
-		"sinon": "^2.3.7",
-		"xo": "^0.18.2"
-	},
-	"peerDependencies": {
-		"ink": "^0.4.0"
-	},
-	"dependencies": {
-		"figures": "^2.0.0",
-		"prop-types": "^15.5.10"
-	},
+    "ava": "^0.20.0",
+    "babel-cli": "^6.24.1",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "eslint-config-xo-react": "^0.13.0",
+    "eslint-plugin-react": "^7.1.0",
+    "ink": "0.3.0",
+    "sinon": "^2.3.7",
+    "xo": "^0.18.2"
+  },
+  "peerDependencies": {
+    "ink": "^0.4.0"
+  },
+  "dependencies": {
+    "figures": "^2.0.0",
+    "prop-types": "^15.5.10"
+  },
   "author": "George Karagkiaouris",
   "license": "MIT",
   "bugs": {
