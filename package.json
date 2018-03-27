@@ -1,6 +1,6 @@
 {
   "name": "ink-select",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Select Component for Ink",
   "main": "lib/index.js",
   "scripts": {
