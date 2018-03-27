@@ -1,7 +1,7 @@
 const {h, Component} = require('ink');
 const PropTypes = require('prop-types');
-const Cursor = require('./cursor');
 const figures = require('figures');
+const Cursor = require('./cursor');
 
 const stdin = process.stdin;
 
