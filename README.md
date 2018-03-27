@@ -33,7 +33,7 @@ render(
 
 ### Select
 
-#### cursorChar
+#### cursorCharacter
 
 Type: `string`
 Default: `❯`
