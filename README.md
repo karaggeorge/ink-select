@@ -43,9 +43,38 @@ class Example extends Component {
   }
 }
 
+const unmount = render(<Example />);
+```
+
+Or, if you want to pass options as an array to get the same result:
+```js
+const {h, Component, render, Text} = require('ink');
+const {Select, Option, Separator} = require('../lib');
+
+class Example extends Component {
+  render() {
+    const options = [
+      { label: 'One', value: 1 },
+      { },
+      { label: 'Two', value: 2, onSelect: () => this.setState({message: 'Action for Two'})},
+      { label: '======' },
+      { label: 'Three', value: 3 }
+    ];
+
+    return (
+      <div>
+        <Select options={options} onSelect={item => this.setState({message: item + ' was selected'})}/>
+        <br />
+        { this.state && this.state.message && <Text green>{this.state.message}</Text>}
+      </div>
+    );
+  }
+}
 
 const unmount = render(<Example />);
 ```
+
+Where any item that has no `value` key will be a separator. If `label` is passed it will be used, otherwise it will use the default.
 
 ## Props
 
@@ -97,6 +126,11 @@ Key bindings
 | <kbd>Enter</kbd> | select option        |
 | <kbd>↑</kbd>     | move the cursor up   |
 | <kbd>↓</kbd>     | move the cursor down |
+
+Related
+---
+- [ink-select-input](https://github.com/vadimdemedes/ink-select-input) - Alternative Select input component
+- [ink-scrollbar](https://github.com/karaggeorge/ink-scrollbar) - Scrollbar component
 
 LICENSE
 ---

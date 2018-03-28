@@ -1,12 +1,13 @@
 const {h} = require('ink');
 const PropTypes = require('prop-types');
 
-const Option = ({children}) => (
-  <span><div>{children}</div></span>
+const Option = ({children, label}) => (
+  <span><div>{label || children}</div></span>
 );
 
 Option.propTypes = {
-  value: PropTypes.any.isRequired
+  value: PropTypes.any.isRequired,
+  label: PropTypes.string
 };
 
 module.exports = Option;

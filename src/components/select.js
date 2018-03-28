@@ -2,20 +2,27 @@ const {h, Component, Text} = require('ink');
 const PropTypes = require('prop-types');
 const figures = require('figures');
 const Cursor = require('./cursor');
+const Option = require('./option');
+const Separator = require('./separator');
 
 const stdin = process.stdin;
 
 class Select extends Component {
   constructor(props) {
     super(props);
+
+    const {options, children} = props;
+
     this.state = {
-      cursor: 0
+      cursor: 0,
+      options: options ? options.map(props => props.value ? <Option {...props}/> : <Separator {...props}/>) : children
     };
 
     this.move = this.move.bind(this);
     this.handleSelect = this.handleSelect.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.renderOptions = this.renderOptions.bind(this);
   }
 
   componentDidMount() {
@@ -27,13 +34,14 @@ class Select extends Component {
   }
 
   move(index, step) {
-    const {length} = this.props.children;
+    const {length} = this.state.options;
     return (index + step + length) % length;
   }
 
   handleSelect(index) {
-    const {children, onSelect} = this.props;
-    const selected = children[index].props;
+    const {onSelect} = this.props;
+    const {options} = this.state;
+    const selected = options[index].props;
 
     if (onSelect) {
       onSelect(selected.value);
@@ -44,8 +52,9 @@ class Select extends Component {
   }
 
   handleChange(index) {
-    const {children, onChange} = this.props;
-    const {value} = children[index].props;
+    const {onChange} = this.props;
+    const {options} = this.state;
+    const {value} = options[index].props;
 
     if (onChange) {
       onChange(value);
@@ -54,13 +63,12 @@ class Select extends Component {
   }
 
   handleKeyPress(ch, key) {
-    const {cursor} = this.state;
-    const {children} = this.props;
+    const {cursor, options} = this.state;
 
     switch (key.name) {
       case 'up': {
         let nextIndex = this.move(cursor, -1);
-        while (!children[nextIndex].props.value) {
+        while (!options[nextIndex].props.value) {
           nextIndex = this.move(nextIndex, -1);
         }
 
@@ -69,7 +77,7 @@ class Select extends Component {
       }
       case 'down': {
         let nextIndex = this.move(cursor, 1);
-        while (!children[nextIndex].props.value) {
+        while (!options[nextIndex].props.value) {
           nextIndex = this.move(nextIndex, 1);
         }
 
@@ -85,20 +93,24 @@ class Select extends Component {
     }
   }
 
-  render(props) {
-    const {cursor} = this.state;
-    const {cursorCharacter} = props;
+  renderOptions() {
+    const {cursorCharacter} = this.props;
+    const {cursor, options} = this.state;
 
+    return options.map(
+      (option, i) => (
+        <Text blue={cursor === i}>
+          <Cursor isActive={cursor === i} cursorCharacter={cursorCharacter}/>
+          {option}
+        </Text>
+      )
+    );
+  }
+
+  render() {
     return (
       <span>
-        {
-          props.children.map((option, i) => (
-            <Text blue={cursor === i}>
-              <Cursor isActive={cursor === i} cursorCharacter={cursorCharacter}/>
-              {option}
-            </Text>
-          ))
-        }
+        {this.renderOptions()}
       </span>
     );
   }
@@ -107,7 +119,8 @@ class Select extends Component {
 Select.propTypes = {
   cursorCharacter: PropTypes.string,
   onChange: PropTypes.func,
-  onSelect: PropTypes.func
+  onSelect: PropTypes.func,
+  options: PropTypes.arrayOf(PropTypes.object)
 };
 
 Select.defaultProps = {

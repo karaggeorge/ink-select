@@ -1,7 +1,7 @@
 const {h, Component, render, Text} = require('ink');
 const {Select, Option, Separator} = require('../lib');
 
-class Example extends Component {
+class OptionsExample extends Component {
   render() {
     return (
       <div>
@@ -23,5 +23,24 @@ class Example extends Component {
   }
 }
 
+class ArrayExample extends Component {
+  render() {
+    const options = [
+      { label: 'One', value: 1 },
+      { },
+      { label: 'Two', value: 2, onSelect: () => this.setState({message: 'Action for Two'})},
+      { label: '======' },
+      { label: 'Three', value: 3 }
+    ];
 
-const unmount = render(<Example />);
+    return (
+      <div>
+        <Select options={options} onSelect={item => this.setState({message: item + ' was selected'})}/>
+        <br />
+        { this.state && this.state.message && <Text green>{this.state.message}</Text>}
+      </div>
+    );
+  }
+}
+
+const unmount = render(<OptionsExample />);
