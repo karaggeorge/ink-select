@@ -1,18 +1,10 @@
 import test from 'ava';
 import {spy} from 'sinon';
-import {h, renderToString, Text} from 'ink';
+import {h, renderToString} from 'ink';
 import {Select, Option, Separator} from '../../lib';
 
 test('renders nothing', t => {
   t.is(renderToString(<Select/>), '');
-});
-
-test('renders given children', t => {
-  t.is(renderToString(
-    <Select>
-      <Text>Hello</Text>
-    </Select>
-  ), '❯\u00A0Hello');
 });
 
 test('calls onChange when moving down the options', t => {

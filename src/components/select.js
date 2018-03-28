@@ -1,4 +1,4 @@
-const {h, Component} = require('ink');
+const {h, Component, Text} = require('ink');
 const PropTypes = require('prop-types');
 const figures = require('figures');
 const Cursor = require('./cursor');
@@ -93,10 +93,10 @@ class Select extends Component {
       <span>
         {
           props.children.map((option, i) => (
-            <span>
+            <Text blue={cursor === i}>
               <Cursor isActive={cursor === i} cursorCharacter={cursorCharacter}/>
               {option}
-            </span>
+            </Text>
           ))
         }
       </span>
