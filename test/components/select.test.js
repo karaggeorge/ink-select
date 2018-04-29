@@ -27,6 +27,23 @@ test('calls onChange when moving down the options', t => {
   t.false(onSelect.called);
 });
 
+test('doesnt crash when theres no options', t => {
+  const setRef = spy();
+  const onChange = spy();
+  const onSelect = spy();
+
+  renderToString(
+    <Select ref={setRef} onChange={onChange} onSelect={onSelect}/>
+  );
+
+  const ref = setRef.firstCall.args[0];
+  ref.handleKeyPress('', {name: 'down'});
+  ref.handleKeyPress('', {name: 'return'});
+
+  t.false(onSelect.called);
+  t.false(onChange.called);
+});
+
 test('calls onChange when moving up the options', t => {
   const setRef = spy();
   const onChange = spy();

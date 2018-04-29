@@ -64,6 +64,9 @@ class Select extends Component {
 
   handleKeyPress(ch, key) {
     const {cursor, options} = this.state;
+    if (!options || options.length <= 0) {
+      return;
+    }
 
     switch (key.name) {
       case 'up': {
