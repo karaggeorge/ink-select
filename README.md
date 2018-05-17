@@ -18,7 +18,7 @@ Usage
 ---
 
 ```js
-const {h, Component, render, Text} = require('ink');
+const {h, Component, render, Color} = require('ink');
 const {Select, Option, Separator} = require('../lib');
 
 class Example extends Component {
@@ -37,7 +37,7 @@ class Example extends Component {
           <Option value='3'>Three</Option>
         </Select>
         <br />
-        { this.state && this.state.message && <Text green>{this.state.message}</Text>}
+        { this.state && this.state.message && <Color green>{this.state.message}</Color>}
       </div>
     );
   }
@@ -48,7 +48,7 @@ const unmount = render(<Example />);
 
 Or, if you want to pass options as an array to get the same result:
 ```js
-const {h, Component, render, Text} = require('ink');
+const {h, Component, render, Color} = require('ink');
 const {Select, Option, Separator} = require('../lib');
 
 class Example extends Component {
@@ -65,7 +65,7 @@ class Example extends Component {
       <div>
         <Select options={options} onSelect={item => this.setState({message: item + ' was selected'})}/>
         <br />
-        { this.state && this.state.message && <Text green>{this.state.message}</Text>}
+        { this.state && this.state.message && <Color green>{this.state.message}</Color>}
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import test from 'ava';
-import {h, renderToString, Text} from 'ink';
+import {h, renderToString, Color} from 'ink';
 import {Option} from '../../lib';
 
 test('renders empty line', t => {
@@ -7,5 +7,5 @@ test('renders empty line', t => {
 });
 
 test('renders children', t => {
-  t.is(renderToString(<Option value={1}><Text>My Option</Text></Option>), 'My Option\n');
+  t.is(renderToString(<Option value={1}><Color>My Option</Color></Option>), 'My Option\n');
 });
